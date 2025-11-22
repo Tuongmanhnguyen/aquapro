@@ -1,0 +1,14 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: aquapro-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      # Persist media files (Images)
+      - ./backend/media:/app/backend/media
+      # Optional: Mount code for hot-reloading during dev (if not using Gunicorn)
+      # - ./backend:/app/backend
+    restart: unless-stopped
